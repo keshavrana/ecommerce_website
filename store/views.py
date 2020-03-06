@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import stripe
 from django.conf import settings
 from django.contrib.auth.models import Group, User
-from .forms import SignUpForm
+from .forms import SignUpForm, ContactForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -224,3 +224,14 @@ def viewOrder(request, order_id):
         order = Order.objects.get(id=order_id, emailAddress=email)
         order_items = OrderItem.objects.filter(order=order)
     return render(request, 'order_detail.html', {'order': order, 'order_items': order_items})
+
+
+
+def contact(request):
+    form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
+
+
+def about(request):
+    return render(request, 'about.html')
