@@ -6,6 +6,7 @@ Cart
 
 {% block content %}
   {% if not cart_items %}
+  
     <div class="text-center">
       <br>
       <h1 class="text-center product_title">
@@ -110,12 +111,16 @@ Cart
             data-zip-code="true">
             </script>
           </form>
+
+
+          
           <a href="{% url 'home' %}" style="text-decoration: none;">
             <button type="button" class="btn btn-lg btn-block bg-dark text-white">
               Continue Shopping
             </button>
           </a>
         </div>
+    
     </div>
   </div>
   {% endif %}
