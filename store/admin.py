@@ -13,7 +13,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'stock', 'available', 'created', 'updated']
     list_editable = ['price', 'stock', 'available']
     prepopulated_fields = {'slug': ('name',)}
-    list_per_page = 5
+    list_per_page = 10
 
 admin.site.register(Product,ProductAdmin)
 
@@ -24,8 +24,9 @@ class OrderItemAdmin(admin.TabularInline):
         ('Product', {'fields': ['product'], }),
         ('Quantity', {'fields': ['quantity'], }),
         ('Price', {'fields': ['price'], }),
+        ('id', {'fields': ['id'],}),
     ]
-    readonly_fields = ['product', 'quantity', 'price']
+    readonly_fields = ['product', 'quantity', 'price','id']
     can_delete = False
     max_num = 0
 
